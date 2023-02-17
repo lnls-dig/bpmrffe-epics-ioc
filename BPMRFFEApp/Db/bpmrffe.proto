@@ -1,0 +1,9 @@
+# Communication protocol definition
+
+OutTerminator = CR LF;
+InTerminator = CR LF;
+
+# Operation
+Rst {
+    out "SYSTem:RESet";
+}

@@ -1,0 +1,12 @@
+# BPM RFFE Database records
+
+# Operations
+
+record(bo, "$(P)$(R)RFFERst-SP") {
+    field(DESC, "Reset firmware")
+    field(DTYP, "stream")
+    field(SCAN, "Passive")
+    field(VAL, "0")
+    field(ZNAM, "reset")
+    field(OUT, "@bpmrffe.proto Rst $(PORT)")
+}
