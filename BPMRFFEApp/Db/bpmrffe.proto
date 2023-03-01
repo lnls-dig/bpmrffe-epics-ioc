@@ -64,7 +64,12 @@ inPIDParam {
     in "%f";
 }
 
-# Operation
+# Operations
+getVersion {
+    out "GET:VERsion?";
+    in "%140c";
+}
+
 Rst {
     out "SYSTem:RESet";
 }

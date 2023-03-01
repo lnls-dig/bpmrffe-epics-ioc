@@ -289,6 +289,15 @@ record(ai, "$(P)$(R)RFFEPidBDTd-RB") {
 
 # Operations
 
+record(waveform, "$(P)$(R)FirmwareVer-Cte") {
+    field(DESC, "Get firmware version")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(FTVL, "CHAR")
+    field(NELM, "141")
+    field(INP, "@bpmrffe.proto getVersion $(PORT)")
+}
+
 record(bo, "$(P)$(R)RFFERst-SP") {
     field(DESC, "Reset firmware")
     field(DTYP, "stream")
