@@ -21,6 +21,26 @@ record(ai, "$(P)$(R)RFFEAtt-RB") {
     field(EGU, "dB")
 }
 
+# Temperature measurements
+
+record(ai, "$(P)$(R)RFFETempAC-Mon") {
+    field(DESC, "Measure temperature from AC board")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(SCAN, "5 second")
+    field(INP, "@bpmrffe.proto inMeasTemp(AC) $(PORT)")
+    field(EGU, "oC")
+}
+
+record(ai, "$(P)$(R)RFFETempBD-Mon") {
+    field(DESC, "Measure temperature from BD board")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(SCAN, "5 second")
+    field(INP, "@bpmrffe.proto inMeasTemp(BD) $(PORT)")
+    field(EGU, "oC")
+}
+
 # Operations
 
 record(bo, "$(P)$(R)RFFERst-SP") {

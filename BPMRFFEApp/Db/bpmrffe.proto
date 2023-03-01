@@ -13,6 +13,13 @@ inAtt {
     in "%f";
 }
 
+# Temperature Measurement
+# $1: Board: AC | BD
+inMeasTemp {
+    out "MEASure:TEMPerature:\$1?";
+    in "%f";
+}
+
 # Operation
 Rst {
     out "SYSTem:RESet";
