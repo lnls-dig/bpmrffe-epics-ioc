@@ -1,5 +1,26 @@
 # BPM RFFE Database records
 
+# Attenuation
+
+record(ao, "$(P)$(R)RFFEAtt-SP") {
+    field(DESC, "Set attenuation")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(SCAN, "Passive")
+    field(OUT, "@bpmrffe.proto outAtt $(PORT)")
+    field(EGU, "dB")
+    field(FLNK, "$(P)$(R)RFFEAtt-RB.PROC CA")
+}
+
+record(ai, "$(P)$(R)RFFEAtt-RB") {
+    field(DESC, "Get attenuation")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(SCAN, "1 second")
+    field(INP, "@bpmrffe.proto inAtt $(PORT)")
+    field(EGU, "dB")
+}
+
 # Operations
 
 record(bo, "$(P)$(R)RFFERst-SP") {

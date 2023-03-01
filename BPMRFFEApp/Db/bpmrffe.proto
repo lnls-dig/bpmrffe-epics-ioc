@@ -3,6 +3,16 @@
 OutTerminator = CR LF;
 InTerminator = CR LF;
 
+# Attenuation
+outAtt {
+    out "SET:ATTEnuation %f";
+}
+
+inAtt {
+    out "GET:ATTEnuation?";
+    in "%f";
+}
+
 # Operation
 Rst {
     out "SYSTem:RESet";
