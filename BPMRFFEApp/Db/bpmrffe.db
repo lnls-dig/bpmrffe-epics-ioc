@@ -41,6 +41,248 @@ record(ai, "$(P)$(R)RFFETempBD-Mon") {
     field(EGU, "oC")
 }
 
+# Heating controls
+
+record(bo, "$(P)$(R)RFFETempCtl-SP") {
+    field(DESC, "Set auto temperature control")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(SCAN, "Passive")
+    field(VAL, "0")
+    field(ZNAM, "off")
+    field(ONAM, "on")
+    field(OUT, "@bpmrffe.proto outTempCtl $(PORT)")
+    field(FLNK, "$(P)$(R)RFFETempCtl-RB.PROC CA")
+}
+
+record(bi, "$(P)$(R)RFFETempCtl-RB") {
+    field(DESC, "Get auto temperature control")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(ZNAM, "off")
+    field(ONAM, "on")
+    field(INP, "@bpmrffe.proto inTempCtl $(PORT)")
+}
+
+# Manual heater control settings
+
+record(dfanout, "$(P)$(R)RFFEHeater-SP") {
+    field(DESC, "Set both boards' heater voltage")
+    field(OMSL, "supervisory")
+    field(OUTA, "$(P)$(R)RFFEHeaterAC-SP PP")
+    field(OUTB, "$(P)$(R)RFFEHeaterBD-SP PP")
+}
+
+record(ao, "$(P)$(R)RFFEHeaterAC-SP") {
+    field(DESC, "Set AC board heater's voltage")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(SCAN, "Passive")
+    field(OUT, "@bpmrffe.proto outHeaterVolt(AC) $(PORT)")
+    field(EGU, "V")
+    field(FLNK, "$(P)$(R)RFFEHeaterAC-RB.PROC CA")
+}
+
+record(ai, "$(P)$(R)RFFEHeaterAC-RB") {
+    field(DESC, "Get AC board heater's voltage")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP, "@bpmrffe.proto inHeaterVolt(AC) $(PORT)")
+    field(EGU, "V")
+}
+
+record(ao, "$(P)$(R)RFFEHeaterBD-SP") {
+    field(DESC, "Set BD board heater's voltage")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(SCAN, "Passive")
+    field(OUT, "@bpmrffe.proto outHeaterVolt(BD) $(PORT)")
+    field(EGU, "V")
+    field(FLNK, "$(P)$(R)RFFEHeaterBD-RB.PROC CA")
+}
+
+record(ai, "$(P)$(R)RFFEHeaterBD-RB") {
+    field(DESC, "Get BD board heater's voltage")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP, "@bpmrffe.proto inHeaterVolt(BD) $(PORT)")
+    field(EGU, "V")
+}
+
+# PID (automatic) controller parameters
+
+record(dfanout, "$(P)$(R)RFFEPidSp-SP") {
+    field(DESC, "Set both boards' heater temp. setpoint")
+    field(OMSL, "supervisory")
+    field(OUTA, "$(P)$(R)RFFEPidSpAC-SP PP")
+    field(OUTB, "$(P)$(R)RFFEPidSpBD-SP PP")
+}
+
+record(ao, "$(P)$(R)RFFEPidSpAC-SP") {
+    field(DESC, "Set AC board heater temp. setpoint")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(SCAN, "Passive")
+    field(OUT, "@bpmrffe.proto outPIDTempSp(AC) $(PORT)")
+    field(EGU, "oC")
+    field(FLNK, "$(P)$(R)RFFEPidSpAC-RB.PROC CA")
+}
+
+record(ai, "$(P)$(R)RFFEPidSpAC-RB") {
+    field(DESC, "Get AC board heater temp. setpoint")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP, "@bpmrffe.proto inPIDTempSp(AC) $(PORT)")
+    field(EGU, "oC")
+}
+
+record(ao, "$(P)$(R)RFFEPidSpBD-SP") {
+    field(DESC, "Set BD board heater temp. setpoint")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(SCAN, "Passive")
+    field(OUT, "@bpmrffe.proto outPIDTempSp(BD) $(PORT)")
+    field(EGU, "oC")
+    field(FLNK, "$(P)$(R)RFFEPidSpBD-RB.PROC CA")
+}
+
+record(ai, "$(P)$(R)RFFEPidSpBD-RB") {
+    field(DESC, "Get BD board heater temp. setpoint")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP, "@bpmrffe.proto inPIDTempSp(BD) $(PORT)")
+    field(EGU, "oC")
+}
+
+record(dfanout, "$(P)$(R)RFFEPidKp-SP") {
+    field(DESC, "Set both boards' PID Kp constant")
+    field(OMSL, "supervisory")
+    field(OUTA, "$(P)$(R)RFFEPidACKp-SP PP")
+    field(OUTB, "$(P)$(R)RFFEPidBDKp-SP PP")
+}
+
+record(ao, "$(P)$(R)RFFEPidACKp-SP") {
+    field(DESC, "Set AC board's PID Kp constant")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(DRVL, "0")
+    field(DRVH, "inf")
+    field(SCAN, "Passive")
+    field(OUT, "@bpmrffe.proto outPIDParam(Kc,AC) $(PORT)")
+    field(FLNK, "$(P)$(R)RFFEPidACKp-RB.PROC CA")
+}
+
+record(ai, "$(P)$(R)RFFEPidACKp-RB") {
+    field(DESC, "Get AC board's PID Kp constant")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP, "@bpmrffe.proto inPIDParam(Kc,AC) $(PORT)")
+}
+
+record(ao, "$(P)$(R)RFFEPidBDKp-SP") {
+    field(DESC, "Set BD board's PID Kp constant")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(DRVL, "0")
+    field(DRVH, "inf")
+    field(SCAN, "Passive")
+    field(OUT, "@bpmrffe.proto outPIDParam(Kc,BD) $(PORT)")
+    field(FLNK, "$(P)$(R)RFFEPidBDKp-RB.PROC CA")
+}
+
+record(ai, "$(P)$(R)RFFEPidBDKp-RB") {
+    field(DESC, "Get BD board's PID Kp constant")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP, "@bpmrffe.proto inPIDParam(Kc,BD) $(PORT)")
+}
+
+record(dfanout, "$(P)$(R)RFFEPidTi-SP") {
+    field(DESC, "Set both boards' PID Ti constant")
+    field(OMSL, "supervisory")
+    field(OUTA, "$(P)$(R)RFFEPidACTi-SP PP")
+    field(OUTB, "$(P)$(R)RFFEPidBDTi-SP PP")
+}
+
+record(ao, "$(P)$(R)RFFEPidACTi-SP") {
+    field(DESC, "Set AC board's PID Ti constant")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(DRVL, "0")
+    field(DRVH, "inf")
+    field(SCAN, "Passive")
+    field(OUT, "@bpmrffe.proto outPIDParam(Ti,AC) $(PORT)")
+    field(FLNK, "$(P)$(R)RFFEPidACTi-RB.PROC CA")
+}
+
+record(ai, "$(P)$(R)RFFEPidACTi-RB") {
+    field(DESC, "Get AC board's PID Ti constant")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP, "@bpmrffe.proto inPIDParam(Ti,AC) $(PORT)")
+}
+
+record(ao, "$(P)$(R)RFFEPidBDTi-SP") {
+    field(DESC, "Set BD board's PID Ti constant")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(DRVL, "0")
+    field(DRVH, "inf")
+    field(SCAN, "Passive")
+    field(OUT, "@bpmrffe.proto outPIDParam(Ti,BD) $(PORT)")
+    field(FLNK, "$(P)$(R)RFFEPidBDTi-RB.PROC CA")
+}
+
+record(ai, "$(P)$(R)RFFEPidBDTi-RB") {
+    field(DESC, "Get BD board's PID Ti constant")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP, "@bpmrffe.proto inPIDParam(Ti,BD) $(PORT)")
+}
+
+record(dfanout, "$(P)$(R)RFFEPidTd-SP") {
+    field(DESC, "Set both boards' PID Td constant")
+    field(OMSL, "supervisory")
+    field(OUTA, "$(P)$(R)RFFEPidACTd-SP PP")
+    field(OUTB, "$(P)$(R)RFFEPidBDTd-SP PP")
+}
+
+record(ao, "$(P)$(R)RFFEPidACTd-SP") {
+    field(DESC, "Set AC board's PID Td constant")
+    field(DTYP, "stream")
+    field(PINI, "YES")
+    field(DRVL, "0")
+    field(DRVH, "inf")
+    field(SCAN, "Passive")
+    field(OUT, "@bpmrffe.proto outPIDParam(Td,AC) $(PORT)")
+    field(FLNK, "$(P)$(R)RFFEPidACTd-RB.PROC CA")
+}
+
+record(ai, "$(P)$(R)RFFEPidACTd-RB") {
+    field(DESC, "Get AC board's PID Td constant")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP, "@bpmrffe.proto inPIDParam(Td,AC) $(PORT)")
+}
+
+record(ao, "$(P)$(R)RFFEPidBDTd-SP") {
+    field(DESC, "Set BD board's PID Td constant")
+    field(DTYP, "stream")
+    field(DRVL, "0")
+    field(DRVH, "inf")
+    field(PINI, "YES")
+    field(SCAN, "Passive")
+    field(OUT, "@bpmrffe.proto outPIDParam(Td,BD) $(PORT)")
+    field(FLNK, "$(P)$(R)RFFEPidBDTd-RB.PROC CA")
+}
+
+record(ai, "$(P)$(R)RFFEPidBDTd-RB") {
+    field(DESC, "Get BD board's PID Td constant")
+    field(DTYP, "stream")
+    field(SCAN, "1 second")
+    field(INP, "@bpmrffe.proto inPIDParam(Td,BD) $(PORT)")
+}
+
 # Operations
 
 record(bo, "$(P)$(R)RFFERst-SP") {

@@ -20,6 +20,50 @@ inMeasTemp {
     in "%f";
 }
 
+# Heating control operations
+outTempCtl {
+    out "SET:TEMPControl:AUTOmatic %{0|1}";
+}
+
+inTempCtl {
+    out "GET:TEMPControl:AUTOmatic?";
+    in "%{0|1}";
+}
+
+# Manual heating setting operations
+# $1: Board: AC | BD
+outHeaterVolt {
+    out "SET:DAC:OUTput:\$1 %f";
+}
+
+inHeaterVolt {
+    out "GET:DAC:OUTput:\$1?";
+    in "%f";
+}
+
+# Temperature setpoint setting operations
+# $1: Board: AC | BD
+outPIDTempSp {
+    out "SET:TEMPerature:SETPoint:\$1 %f";
+}
+
+inPIDTempSp {
+    out "GET:TEMPerature:SETPoint:\$1?";
+    in "%f";
+}
+
+# PID controller parameters setting operations
+# $1: Parameter: Kc | Ti | Td
+# $2: Board: AC | BD
+outPIDParam {
+    out "SET:PID:\$1:\$2 %f";
+}
+
+inPIDParam {
+    out "GET:PID:\$1:\$2?";
+    in "%f";
+}
+
 # Operation
 Rst {
     out "SYSTem:RESet";
