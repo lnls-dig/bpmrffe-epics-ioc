@@ -12,9 +12,6 @@ DBD += BPMRFFE.dbd
 
 BPMRFFE_DBD += base.dbd
 
-BPMRFFE_LIBS += calc
-BPMRFFE_DBD += calc.dbd
-
 BPMRFFE_LIBS += asyn
 BPMRFFE_DBD += asyn.dbd
 BPMRFFE_DBD += drvAsynIPPort.dbd

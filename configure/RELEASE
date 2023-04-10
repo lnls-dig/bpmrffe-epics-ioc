@@ -23,13 +23,12 @@
 # the CONFIG_SITE file.
 
 # Variables and paths to dependent modules:
-SUPPORT = /usr/local/epics-nfs/modules/R3.15.6/synApps/R6.1/support
-ASYN = $(SUPPORT)/asyn-R4-36
-CALC = $(SUPPORT)/calc-R3-7-3
-STREAM = $(SUPPORT)/StreamDevice-2-8-9
+MODULES = /opt/epics/modules
+ASYN = $(MODULES)/asyn
+STREAM = $(MODULES)/StreamDevice
 
 # EPICS_BASE should appear last so earlier modules can override stuff:
-EPICS_BASE = /usr/local/epics-nfs/base/R3.15.6
+EPICS_BASE = /opt/epics/base
 
 # These allow developers to override the RELEASE variable settings
 # without having to modify the configure/RELEASE file itself.
