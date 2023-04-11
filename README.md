@@ -21,20 +21,18 @@ resulting image, only the time for building it.
 
 ## Running the IOC
 
-Afterwards, you should create a container specifying the area and device
-prefixes, and set up the network to inherit the host's configuration.
+Afterwards, you should create a container specifying the crate and BPM slot
+numbers, and set up the network to inherit the host's configuration. For
+instance,
 
 ```bash
 docker run \
     -d \
-    -it \
     --network host \
-    -e EPICS_PV_AREA_PREFIX=A: \
-    -e EPICS_PV_DEVICE_PREFIX=D: \
+    -e CRATE_NUMBER=23 \
+    -e BPM_NUMBER=1 \
     ghcr.io/lnls-dig/rffe-epics-ioc
 ```
 
-Interactive mode (`-it`) is needed to prevent the IOC Shell from exiting due to
-EOF even when executing in detached mode (`-d`).
-
-By default, `st.cmd` will be executed.
+By default, `st.cmd` will run under `procServ`, which will create a stream Unix
+socket in `/run/procServ/ioc.sock` that can be used to access the IOC shell.
