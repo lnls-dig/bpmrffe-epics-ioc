@@ -9,7 +9,8 @@ RUN apt update -y && \
     apt install -y --no-install-recommends \
         build-essential \
         wget \
-        ca-certificates
+        ca-certificates \
+        procserv
 
 ENV EPICS_BASE_PATH /opt/epics/base
 ENV EPICS_BASE_VERSION 3.15.9
@@ -43,4 +44,4 @@ RUN apt remove -y \
 
 WORKDIR /opt/rffe-epics-ioc/iocBoot/iocBPMRFFEApp
 
-CMD ./st.cmd
+CMD ./run.sh
