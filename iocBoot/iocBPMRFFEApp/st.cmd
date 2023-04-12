@@ -24,5 +24,15 @@ dbLoadRecords("$(TOP)/db/bpmrffe.db", "P=$(P), R=$(R), PORT=$(PORT)")
 ## Load asynRecord for device connection monitoring
 dbLoadRecords("$(ASYN)/db/asynRecord.db", "P=$(P)$(R), R=RFFEasyn, PORT=$(PORT), ADDR=0, OMAX=80, IMAX=80")
 
+## Load autosave monitoring records
+dbLoadRecords("$(AUTOSAVE)/asApp/Db/save_restoreStatus.db", "P=$(P)$(R)")
+
 cd "${TOP}/iocBoot/${IOC}"
+
+## Configure autosave
+< save_restore.cmd
+
 iocInit
+
+create_monitor_set("bpmrffe.req", 30, "P=$(P), R=$(R)")
+set_savefile_name("bpmrffe.req", "$(P)$(R).sav")

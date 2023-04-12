@@ -14,5 +14,6 @@ export EPICS_PV_DEVICE_PREFIX=${!device_prefix_var}
 
 socket_path=/run/procServ/ioc.sock
 mkdir -p $(dirname $socket_path)
+mkdir -p /var/opt/rffe-epics-ioc/autosave
 
 procServ -f -i ^C^D -L - unix:$socket_path ./st.cmd
