@@ -23,6 +23,7 @@ RUN ./install_epics.sh && \
 ENV EPICS_MODULES_PATH /opt/epics/modules
 ENV ASYN_VERSION 4-44-2
 ENV STREAMDEVICE_VERSION 2.8.24
+ENV AUTOSAVE_VERSION 5-10-2
 
 WORKDIR ${EPICS_MODULES_PATH}
 COPY docker/install_modules.sh .

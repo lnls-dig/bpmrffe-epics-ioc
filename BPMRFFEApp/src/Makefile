@@ -19,6 +19,9 @@ BPMRFFE_DBD += drvAsynIPPort.dbd
 BPMRFFE_LIBS += stream
 BPMRFFE_DBD += stream.dbd
 
+BPMRFFE_LIBS += autosave
+BPMRFFE_DBD += asSupport.dbd
+
 # BPMRFFE_registerRecordDeviceDriver.cpp derives from BPMRFFE.dbd
 BPMRFFE_SRCS += BPMRFFE_registerRecordDeviceDriver.cpp
 

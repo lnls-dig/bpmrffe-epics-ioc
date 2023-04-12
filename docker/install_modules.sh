@@ -33,3 +33,7 @@ ASYN = ${EPICS_MODULES_PATH}/asyn
 
 EPICS_BASE = ${EPICS_BASE_PATH}
 "
+
+install_module 'epics-modules' 'autosave' R$AUTOSAVE_VERSION "
+EPICS_BASE = ${EPICS_BASE_PATH}
+"
