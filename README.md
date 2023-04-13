@@ -22,8 +22,8 @@ resulting image, only the time for building it.
 ## Running the IOC
 
 Afterwards, you should create a container specifying the crate and BPM slot
-numbers, and set up the network to inherit the host's configuration. For
-instance,
+numbers, RFFEs' base IP address, and set up the network to inherit the host's
+configuration. For instance,
 
 ```bash
 docker run \
@@ -32,6 +32,7 @@ docker run \
     --mount type=bind,source=/var/opt/rffe-epics-ioc,target=/var/opt/rffe-epics-ioc \
     -e CRATE_NUMBER=23 \
     -e BPM_NUMBER=1 \
+    -e RFFE_BASE_IP_ADDRESS=127.0.0.0 \
     ghcr.io/lnls-dig/rffe-epics-ioc
 ```
 
