@@ -15,7 +15,7 @@ epicsEnvSet("STREAM_PROTOCOL_PATH", "$(TOP)/BPMRFFEApp/Db")
 epicsEnvSet("PORT", "BPMRFFE")
 
 ## Set up address
-drvAsynIPPortConfigure("$(PORT)", "10.20.21.36:9001", 0, 0, 0)
+drvAsynIPPortConfigure("$(PORT)", "${RFFE_IP_ADDRESS}:9001", 0, 0, 0)
 asynSetOption("$(PORT)", 0, "disconnectOnReadTimeout", "Y")
 
 ## Load record instances
