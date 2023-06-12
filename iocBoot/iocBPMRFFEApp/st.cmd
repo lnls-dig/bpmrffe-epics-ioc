@@ -10,7 +10,7 @@ BPMRFFE_registerRecordDeviceDriver pdbbase
 
 ## Setup environment variables
 epicsEnvSet("P", "${EPICS_PV_AREA_PREFIX}")
-epicsEnvSet("R", "${EPICS_PV_DEVICE_PREFIX}")
+epicsEnvSet("R", "${EPICS_PV_DEVICE_PREFIX}RFFE")
 epicsEnvSet("STREAM_PROTOCOL_PATH", "$(TOP)/BPMRFFEApp/Db")
 epicsEnvSet("PORT", "BPMRFFE")
 
@@ -22,7 +22,7 @@ asynSetOption("$(PORT)", 0, "disconnectOnReadTimeout", "Y")
 dbLoadRecords("$(TOP)/db/bpmrffe.db", "P=$(P), R=$(R), PORT=$(PORT)")
 
 ## Load asynRecord for device connection monitoring
-dbLoadRecords("$(ASYN)/db/asynRecord.db", "P=$(P)$(R), R=RFFEasyn, PORT=$(PORT), ADDR=0, OMAX=80, IMAX=80")
+dbLoadRecords("$(ASYN)/db/asynRecord.db", "P=$(P)$(R), R=asyn, PORT=$(PORT), ADDR=0, OMAX=80, IMAX=80")
 
 ## Load autosave monitoring records
 dbLoadRecords("$(AUTOSAVE)/asApp/Db/save_restoreStatus.db", "P=$(P)$(R)")
