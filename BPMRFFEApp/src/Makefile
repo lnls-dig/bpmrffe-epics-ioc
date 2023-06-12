@@ -16,6 +16,9 @@ BPMRFFE_LIBS += asyn
 BPMRFFE_DBD += asyn.dbd
 BPMRFFE_DBD += drvAsynIPPort.dbd
 
+BPMRFFE_LIBS += calc
+BPMRFFE_DBD += calcSupport.dbd
+
 BPMRFFE_LIBS += stream
 BPMRFFE_DBD += stream.dbd
 

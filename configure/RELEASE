@@ -25,6 +25,7 @@
 # Variables and paths to dependent modules:
 MODULES = /opt/epics/modules
 ASYN = $(MODULES)/asyn
+CALC = $(MODULES)/calc
 STREAM = $(MODULES)/StreamDevice
 AUTOSAVE = $(MODULES)/autosave
 
