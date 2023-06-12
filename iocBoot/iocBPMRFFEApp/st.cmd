@@ -22,10 +22,10 @@ asynSetOption("$(PORT)", 0, "disconnectOnReadTimeout", "Y")
 dbLoadRecords("$(TOP)/db/bpmrffe.db", "P=$(P), R=$(R), PORT=$(PORT)")
 
 ## Load asynRecord for device connection monitoring
-dbLoadRecords("$(ASYN)/db/asynRecord.db", "P=$(P)$(R), R=asyn, PORT=$(PORT), ADDR=0, OMAX=80, IMAX=80")
+dbLoadRecords("$(TOP)/db/asynRecord.db", "P=$(P)$(R), R=asyn, PORT=$(PORT), ADDR=0, OMAX=80, IMAX=80")
 
 ## Load autosave monitoring records
-dbLoadRecords("$(AUTOSAVE)/asApp/Db/save_restoreStatus.db", "P=$(P)$(R)")
+dbLoadRecords("$(TOP)/db/save_restoreStatus.db", "P=$(P)$(R)")
 
 cd "${TOP}/iocBoot/${IOC}"
 
