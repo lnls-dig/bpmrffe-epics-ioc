@@ -1,0 +1,12 @@
+services:
+  ioc:
+    image: ghcr.io/lnls-dig/rffe-epics-ioc
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+      labels:
+        org.opencontainers.image.source: https://github.com/lnls-dig/rffe-epics-ioc
+      args:
+        REPONAME: rffe-epics-ioc
+        RUNDIR: /opt/rffe-epics-ioc/iocBoot/iocBPMRFFEApp
+        ENTRYPOINT: ./run.sh
