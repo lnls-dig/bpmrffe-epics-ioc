@@ -6,6 +6,8 @@ record(ao, "$(P)$(R)RFFEAtt-SP") {
     field(DESC, "Set attenuation")
     field(DTYP, "stream")
     field(PINI, "YES")
+    field(DRVL, "0")
+    field(DRVH, "31.5")
     field(SCAN, "Passive")
     field(OUT, "@bpmrffe.proto outAtt $(PORT)")
     field(EGU, "dB")
