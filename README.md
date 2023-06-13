@@ -14,5 +14,5 @@ docker compose build
 ## Accessing the IOC Shell
 
 By default, `st.cmd` will run under `procServ` inside the container, which will
-create a stream Unix socket in `/run/procServ/ioc.sock` that can be used to
-access the IOC shell.
+create a `ioc.sock` stream Unix socket in the container working directory that
+can be used to access the IOC shell.
