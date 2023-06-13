@@ -5,6 +5,8 @@ set -ue
 # Load prefix mappings
 . slot-mapping.env
 
+CRATE_NUMBER=${CRATE_NUMBER#0}
+
 # Define which env var to use as prefix
 area_prefix_var=CRATE_${CRATE_NUMBER}_BPM_${BPM_NUMBER}_PV_AREA_PREFIX
 device_prefix_var=CRATE_${CRATE_NUMBER}_BPM_${BPM_NUMBER}_PV_DEVICE_PREFIX
