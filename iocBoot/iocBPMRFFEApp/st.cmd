@@ -35,4 +35,4 @@ cd "${TOP}/iocBoot/${IOC}"
 iocInit
 
 create_monitor_set("bpmrffe.req", 30, "P=$(P), R=$(R)")
-set_savefile_name("bpmrffe.req", "$(P)$(R).sav")
+set_savefile_name("bpmrffe.req", "$(P)$(R)_settings.sav")
