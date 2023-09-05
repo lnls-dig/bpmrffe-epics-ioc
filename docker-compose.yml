@@ -4,6 +4,7 @@ services:
     build:
       context: ./
       dockerfile: docker/Dockerfile
+      target: static-link
       labels:
         org.opencontainers.image.source: https://github.com/lnls-dig/rffe-epics-ioc
       args:
