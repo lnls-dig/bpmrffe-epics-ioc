@@ -3,6 +3,7 @@ services:
     rffe-ioc: &base
         image: ghcr.io/lnls-dig/rffe-epics-ioc
         network_mode: host
+        restart: unless-stopped
         volumes:
           - type: bind
             source: /var/opt/rffe-epics-ioc
