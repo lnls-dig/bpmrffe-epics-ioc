@@ -23,13 +23,12 @@
 # the CONFIG_SITE file.
 
 # Variables and paths to dependent modules:
-MODULES = /opt/epics/modules
-ASYN = $(MODULES)/asyn
-STREAM = $(MODULES)/StreamDevice
-AUTOSAVE = $(MODULES)/autosave
+ASYN =
+STREAM =
+AUTOSAVE =
 
 # EPICS_BASE should appear last so earlier modules can override stuff:
-EPICS_BASE = /opt/epics/base
+EPICS_BASE =
 
 # These allow developers to override the RELEASE variable settings
 # without having to modify the configure/RELEASE file itself.
