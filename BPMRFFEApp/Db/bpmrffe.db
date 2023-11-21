@@ -12,6 +12,7 @@ record(ao, "$(P)$(R)Att-SP") {
     field(OUT, "@bpmrffe.proto outAtt $(PORT)")
     field(EGU, "dB")
     field(FLNK, "$(P)$(R)Att-RB.PROC CA")
+    field(ASG, "Interlock")
 }
 
 record(ai, "$(P)$(R)Att-RB") {
