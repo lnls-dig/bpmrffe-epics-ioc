@@ -14,6 +14,9 @@ epicsEnvSet("R", "${EPICS_PV_DEVICE_PREFIX}RFFE")
 epicsEnvSet("STREAM_PROTOCOL_PATH", "$(TOP)/BPMRFFEApp/Db")
 epicsEnvSet("PORT", "BPMRFFE")
 
+asSetFilename("$(TOP)/BPMRFFEApp/Db/accessSecurityFile.acf")
+asSetSubstitutions("P=$(P),R=$(EPICS_PV_DEVICE_PREFIX)")
+
 ## Set up address
 drvAsynIPPortConfigure("$(PORT)", "${RFFE_IP_ADDRESS}:9001", 0, 0, 0)
 asynSetOption("$(PORT)", 0, "disconnectOnReadTimeout", "Y")
