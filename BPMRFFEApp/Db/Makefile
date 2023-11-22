@@ -6,8 +6,11 @@ include $(TOP)/configure/CONFIG
 # Install databases
 DB += bpmrffe.db
 
-DB += $(ASYN)/db/asynRecord.db
-DB += $(AUTOSAVE)/asApp/Db/save_restoreStatus.db
+DB += bpmrffe.proto
+DB += accessSecurityFile.acf
+
+DB_INSTALLS += $(ASYN)/db/asynRecord.db
+DB_INSTALLS += $(AUTOSAVE)/asApp/Db/save_restoreStatus.db
 
 include $(TOP)/configure/RULES
 #----------------------------------------

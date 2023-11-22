@@ -11,10 +11,10 @@ BPMRFFE_registerRecordDeviceDriver pdbbase
 ## Setup environment variables
 epicsEnvSet("P", "${EPICS_PV_AREA_PREFIX}")
 epicsEnvSet("R", "${EPICS_PV_DEVICE_PREFIX}RFFE")
-epicsEnvSet("STREAM_PROTOCOL_PATH", "$(TOP)/BPMRFFEApp/Db")
+epicsEnvSet("STREAM_PROTOCOL_PATH", "$(TOP)/db")
 epicsEnvSet("PORT", "BPMRFFE")
 
-asSetFilename("$(TOP)/BPMRFFEApp/Db/accessSecurityFile.acf")
+asSetFilename("$(TOP)/db/accessSecurityFile.acf")
 asSetSubstitutions("P=$(P),R=$(EPICS_PV_DEVICE_PREFIX)")
 
 ## Set up address
