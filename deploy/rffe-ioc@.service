@@ -1,0 +1,11 @@
+[Unit]
+Description=RFFE EPICS IOC %i
+
+[Service]
+User=iocs
+
+MemoryAccounting=yes
+
+WorkingDirectory=/opt/rffe-epics-ioc
+ExecStart=/bin/sh -c "CRATE_NUMBER=$(/opt/afc-epics-ioc/iocBoot/iocutca/getCrate.sh) podman-compose up rffe-ioc-%i"
+ExecStop=/usr/bin/podman-compose stop --timeout=0 rffe-ioc-%i
