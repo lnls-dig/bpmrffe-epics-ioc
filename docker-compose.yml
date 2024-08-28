@@ -1,0 +1,9 @@
+services:
+  build-static-ioc:
+    image: ghcr.io/cnpem/lnls-alpine-3-epics-7:v0.11.0
+    volumes:
+      - type: bind
+        source: ./
+        target: /opt/rffe-epics-ioc
+    working_dir: /opt/rffe-epics-ioc
+    command: lnls-build-static-ioc rffe-epics-ioc
