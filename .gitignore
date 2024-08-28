@@ -8,3 +8,6 @@ envPaths
 
 # Ignore local configuration
 configure/*.local
+
+# Build tarballs
+*.tar.gz
