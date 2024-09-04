@@ -5,6 +5,8 @@ set -ue
 # Load prefix mappings
 . slot-mapping.env
 
+BPM_NUMBER=$1
+CRATE_NUMBER=$(/opt/afc-epics-ioc/iocBoot/iocutca/getCrate.sh)
 CRATE_NUMBER=${CRATE_NUMBER#0}
 
 # Define which env var to use as prefix
@@ -18,7 +20,4 @@ export EPICS_PV_DEVICE_PREFIX=${!device_prefix_var}
 IFS="." read -a ip <<< $RFFE_BASE_IP_ADDRESS
 export RFFE_IP_ADDRESS=${ip[0]}.${ip[1]}.${ip[2]}.$(( ${ip[3]} + $BPM_NUMBER ))
 
-socket_path=./ioc.sock
-mkdir -p /var/opt/rffe-epics-ioc/autosave
-
-procServ -f -i ^C^D -L - unix:$socket_path ./st.cmd
+procServ -f -i ^C^D -L - $(( 1800 + BPM_NUMBER ))  ./st.cmd
