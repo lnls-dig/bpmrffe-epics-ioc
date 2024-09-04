@@ -1,0 +1,11 @@
+[Unit]
+Description=RFFE EPICS IOC %i
+
+[Service]
+User=iocs
+
+MemoryAccounting=yes
+
+Environment="RFFE_BASE_IP_ADDRESS=192.168.2.190"
+WorkingDirectory=/opt/rffe-epics-ioc/iocBoot/iocBPMRFFEApp
+ExecStart=/opt/rffe-epics-ioc/iocBoot/iocBPMRFFEApp/run.sh %i
