@@ -9,7 +9,7 @@ save_restoreSet_DatedBackupFiles(1)
 save_restoreSet_NumSeqFiles(3)
 save_restoreSet_SeqPeriodInSeconds(300)
 
-set_savefile_path("/var/opt/rffe-epics-ioc", "autosave")
+set_savefile_path("/var/opt/rffe-epics-ioc", "")
 
 set_pass0_restoreFile("$(P)$(R)_settings.sav")
 set_pass1_restoreFile("$(P)$(R)_settings.sav")
